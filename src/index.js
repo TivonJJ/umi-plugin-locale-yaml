@@ -22,9 +22,7 @@ export function getLocaleFileList(absSrcPath, singular) {
       const stats = statSync(fullname);
       const fileInfo = /^([a-z]{2})-([A-Z]{2})\.(yml|yaml)$/.exec(localePaths[i]);
       if (stats.isFile() && fileInfo) {
-          const messages = flat.flatten(yamlReader.read(winPath(fullname)));
-          console.log(messages)
-          process.exit(0)
+        const messages = flat.flatten(yamlReader.read(winPath(fullname)));
         localeList.push({
           lang: fileInfo[1],
           country: fileInfo[2],
