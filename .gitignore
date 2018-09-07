@@ -1,0 +1,5 @@
+# dependencies
+**/node_modules
+# roadhog-api-doc ignore
+/lib
+.gitignore

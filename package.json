@@ -1,0 +1,38 @@
+{
+  "name": "umi-plugin-locale-yaml",
+  "version": "1.0.0",
+  "description": "A umi plugin for provide internationalization function.",
+  "main": "./lib/index.js",
+  "license": "MIT",
+  "files": [
+    "lib",
+    "src",
+    "template"
+  ],
+  "keywords": [
+    "umi",
+    "umi-locale"
+  ],
+  "dependencies": {
+    "flat": "^4.1.0",
+    "mustache": "^2.3.0",
+    "prop-types": "^15.6.2",
+    "react-intl": "^2.4.0",
+    "umi-utils": "^0.2.2",
+    "yaml-reader": "^0.4.0"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@babel/preset-es2015": "^7.0.0-beta.53",
+    "@babel/preset-es2017": "^7.0.0-beta.53",
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "gulp": "^3.9.1"
+  }
+}
