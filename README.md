@@ -4,7 +4,7 @@
 
 基于[umi-plugin-locale](https://github.com/umijs/umi/tree/master/packages/umi-plugin-locale)实现。
 
-## 配置
+## 配置 (如果使用了umi-plugin-react，需要关闭locale配置)
 
 **.umirc.js**
 
