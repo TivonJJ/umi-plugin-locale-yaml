@@ -1,7 +1,7 @@
 {
   "name": "umi-plugin-locale-yaml",
-  "version": "1.0.1",
-  "description": "A umi plugin for provide internationalization function.",
+  "version": "1.0.3",
+  "description": "基于yaml配置的UMI国际化插件.",
   "main": "./lib/index.js",
   "license": "MIT",
   "files": [
@@ -11,8 +11,18 @@
   ],
   "keywords": [
     "umi",
-    "umi-locale"
+    "umi-locale",
+    "umi-locale-yaml"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TivonJJ/umi-plugin-locale-yaml"
+  },
+  "author": "Tivon",
+  "bugs": {
+    "url": "https://github.com/TivonJJ/umi-plugin-locale-yaml/issues"
+  },
+  "homepage": "https://github.com/TivonJJ/umi-plugin-locale-yaml/blob/master/README.md",
   "dependencies": {
     "flat": "^4.1.0",
     "mustache": "^2.3.0",

@@ -3,8 +3,9 @@
 `umi`多语言控制插件YAML版本。
 
 基于[umi-plugin-locale](https://github.com/umijs/umi/tree/master/packages/umi-plugin-locale)实现。
+>  使用方法同 umi-plugin-locale  仅修改了读取的配置文件格式yml配置
 
-## 配置 (如果使用了umi-plugin-react，需要关闭locale配置)
+## 配置 (如果使用了umi-plugin-react/umi-plugin-locale，需要关闭locale配置)
 
 **.umirc.js**
 
@@ -60,6 +61,9 @@ App:
   appName: 国际化
   version: 版本
   copyright: C
+  desc:
+    title: 标题
+    content: 内容
 ```
 
 en-US.yml
@@ -69,6 +73,9 @@ App:
   appName: i18n
   version: Ver
   copyright: C
+  desc:
+      title: title
+      content: content
 ```
 
-## 使用方法同 umi-plugin-locale  仅修改了读取的配置文件格式
+> yml 会被转换成平级的于原来json配置一样的格式，所以使用的方式不变。
