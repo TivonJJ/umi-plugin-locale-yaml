@@ -1,6 +1,6 @@
 {
   "name": "umi-plugin-locale-yaml",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "基于yaml配置的UMI国际化插件.",
   "main": "./lib/index.js",
   "license": "MIT",
@@ -25,12 +25,11 @@
   "homepage": "https://github.com/TivonJJ/umi-plugin-locale-yaml",
   "dependencies": {
     "flat": "^4.1.0",
-    "js-yaml": "^3.12.0",
     "mustache": "^2.3.0",
     "prop-types": "^15.6.2",
     "react-intl": "^2.4.0",
     "umi-utils": "^0.2.2",
-    "yaml-include": "^1.2.0"
+    "yaml-import": "^0.2.3"
   },
   "directories": {
     "test": "test"
