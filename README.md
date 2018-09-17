@@ -51,7 +51,7 @@ export default {
 
 多语言文件的命名规范：`<lang>-<COUNTRY>.yml`
 
-
+支持include载入文件功能 基于 [yaml-include](https://www.npmjs.com/package/yaml-include) 实现
 多语言文件的内容规范：键-值组成的字面量，如下：
 
 zh-CN.yml
@@ -64,6 +64,8 @@ App:
   desc:
     title: 标题
     content: 内容
+Page: !!inc/file userPage.yaml
+Sys: !!inc/dir [ 'sysPage', { recursive: false, allowEmpty: false }]
 ```
 
 en-US.yml
@@ -76,6 +78,8 @@ App:
   desc:
       title: title
       content: content
+Page: !!inc/file userPage.yaml
+Sys: !!inc/dir [ 'sysPage', { recursive: false, allowEmpty: false }]
 ```
 
 > yml 会被转换成平级的于原来json配置一样的格式，所以使用的方式不变。

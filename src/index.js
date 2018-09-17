@@ -8,7 +8,8 @@ import {
 } from 'fs';
 import { winPath } from 'umi-utils';
 import Mustache from 'mustache';
-import yamlReader from 'yaml-reader';
+import yaml from 'js-yaml';
+import yamlinc from 'yaml-include';
 import flat from 'flat';
 
 // export for test
@@ -22,7 +23,8 @@ export function getLocaleFileList(absSrcPath, singular) {
       const stats = statSync(fullname);
       const fileInfo = /^([a-z]{2})-([A-Z]{2})\.(yml|yaml)$/.exec(localePaths[i]);
       if (stats.isFile() && fileInfo) {
-        const messages = flat.flatten(yamlReader.read(winPath(fullname)));
+        const yamlObj = yaml.load(readFileSync(winPath(fullname),'utf-8'), { schema: yamlinc.YAML_INCLUDE_SCHEMA });
+        const messages = flat.flatten(yamlObj);
         localeList.push({
           lang: fileInfo[1],
           country: fileInfo[2],
