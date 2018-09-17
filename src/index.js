@@ -20,8 +20,9 @@ export function getLocaleFileList(absSrcPath, singular) {
     for (let i = 0; i < localePaths.length; i++) {
       const fullname = join(localePath, localePaths[i]);
       const stats = statSync(fullname);
-      const fileInfo = /^([a-z]{2})-([A-Z]{2})\.(yml|yaml)$/.exec(localePaths[i]);
+      const fileInfo = /^([a-z]{2})-([A-Z]{2})\.(ya?ml)$/.exec(localePaths[i]);
       if (stats.isFile() && fileInfo) {
+          console.log(winPath(fullname))
         const yamlObj = yimp.read(winPath(fullname));
         const messages = flat.flatten(yamlObj);
         localeList.push({
