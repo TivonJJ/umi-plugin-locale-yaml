@@ -82,4 +82,8 @@ Page: !!import/single userPage.yaml
 Sys: !!import/dirMerge [ 'sysPage', 'dir2']
 ```
 
-> yml 会被转换成平级的于原来json配置一样的格式，所以使用的方式不变。
+> yml 会被转换成平级的与原来json配置一样的格式，所以使用的方式不变。
+
+```
+ formatMessage({id:'App.appName'}) // i18n
+```
