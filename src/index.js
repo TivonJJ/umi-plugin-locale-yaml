@@ -49,10 +49,12 @@ export default function (api, options = {}) {
 
     api.addRendererWrapperWithComponent(() => {
         const localeFileList = getLocaleFileList(paths.absSrcPath, config.singular);
-        const wrapperTpl = readFileSync(
-            join(__dirname, '../template/wrapper.jsx.tpl'),
+        const wrapperTplJsx = options.async?'wrapper_async.jsx.tpl':'wrapper.jsx.tpl';
+        let wrapperTpl = readFileSync(
+            join(__dirname, '../template/'+wrapperTplJsx),
             'utf-8',
         );
+        wrapperTpl = wrapperTpl.replace('<%= loadingComponent %>',getLoading());
         const localesDir = join(paths.absTmpDirPath, './locales');
         if(!existsSync(localesDir))mkdirSync(localesDir);
         localeFileList.forEach(item=>{
@@ -63,6 +65,7 @@ export default function (api, options = {}) {
         });
         const defaultLocale = options.default || 'zh-CN';
         const wrapperContent = Mustache.render(wrapperTpl, {
+            async:options.async,
             localeList: localeFileList,
             antd: options.antd === undefined ? true : options.antd,
             baseNavigator:
@@ -75,6 +78,16 @@ export default function (api, options = {}) {
         const wrapperPath = join(paths.absTmpDirPath, './LocaleWrapper.jsx');
         writeFileSync(wrapperPath, wrapperContent, 'utf-8');
         return wrapperPath;
+
+        function getLoading() {
+            let codes = ['let loadingComponent = null'];
+            if(typeof options.async==='object' && options.async.loadingComponent){
+                codes.push(`const Component = require('${winPath((0,join)(paths.absSrcPath, options.async.loadingComponent))}').default`,
+                    `loadingComponent = <Component/>`)
+            }
+            codes.push(`if(this.state.loading)return loadingComponent`);
+            return codes.join('\n  ')
+        }
     });
 
     api.modifyAFWebpackOpts(memo => {
