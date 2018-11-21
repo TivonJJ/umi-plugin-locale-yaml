@@ -20,7 +20,7 @@ const defaultAntd = require('antd/lib/locale-provider/{{defaultAntdLocale}}');
 const localeInfo = {
   {{#localeList}}
   '{{name}}': {
-    messages: require('{{{path}}}').default,
+    messages: require('{{{path}}}'),
     locale: '{{name}}',
     {{#antd}}antd: require('antd/lib/locale-provider/{{lang}}_{{country}}'),{{/antd}}
     data: require('react-intl/locale-data/{{lang}}'),

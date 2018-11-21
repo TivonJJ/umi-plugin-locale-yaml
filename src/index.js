@@ -53,19 +53,13 @@ export default function (api, options = {}) {
             join(__dirname, '../template/wrapper.jsx.tpl'),
             'utf-8',
         );
-        const localeTpl = readFileSync(
-            join(__dirname, '../template/locale.js.tpl'),
-            'utf-8',
-        );
         const localesDir = join(paths.absTmpDirPath, './locales');
         if(!existsSync(localesDir))mkdirSync(localesDir);
         localeFileList.forEach(item=>{
             const yamlObj = yimp.read(item.src);
             const messages = flat.flatten(yamlObj);
-            item.path = winPath(join(localesDir,item.name+'.js'));
-            writeFileSync(item.path, Mustache.render(localeTpl,{
-                messages:JSON.stringify(messages)
-            }), 'utf-8');
+            item.path = winPath(join(localesDir,item.name+'.json'));
+            writeFileSync(item.path, JSON.stringify(messages), 'utf-8');
         });
         const defaultLocale = options.default || 'zh-CN';
         const wrapperContent = Mustache.render(wrapperTpl, {
