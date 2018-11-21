@@ -50,8 +50,8 @@ export default class extends React.PureComponent {
         loading:true
     };
     componentDidMount(){
-        import(`./locales/${appLocale.locale}`).then(messages=>{
-            appLocale.messages = messages;
+        import(/* webpackChunkName: "locale" */ `./locales/${appLocale.locale}`).then(({default:_})=>{
+            appLocale.messages = _;
         },err=>{
             throw err;
         }).finally(()=>{
