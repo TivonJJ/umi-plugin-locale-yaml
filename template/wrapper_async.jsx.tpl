@@ -67,7 +67,7 @@ export default class extends React.PureComponent {
         </IntlProvider>)
         {{/localeList.length}}
         {{#antd}}
-        ret = (<LocaleProvider locale={appLocale.antd || defaultAntd}>
+        ret = (<LocaleProvider locale={appLocale.antd ? (appLocale.antd.default || appLocale.antd) : defaultAntd}>
           {ret}
         </LocaleProvider>);
         {{/antd}}

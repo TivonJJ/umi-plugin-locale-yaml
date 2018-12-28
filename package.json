@@ -1,6 +1,6 @@
 {
   "name": "umi-plugin-locale-yaml",
-  "version": "2.0.3",
+  "version": "2.1.0",
   "description": "基于yaml配置的UMI国际化插件.",
   "main": "./lib/index.js",
   "license": "MIT",
