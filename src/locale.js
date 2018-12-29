@@ -4,8 +4,10 @@ function setLocale(lang) {
         // for reset when lang === undefined
         throw new Error('setLocale lang format error');
     }
-    window.localStorage.setItem('umi_locale', lang || '');
-    window.location.reload();
+    if (getLocale() !== lang) {
+        window.localStorage.setItem('umi_locale', lang || '');
+        window.location.reload();
+    }
 }
 
 function getLocale() {
@@ -24,6 +26,16 @@ let intl = {
 function _setIntlObject(theIntl) {
     // umi 系统 API，不对外暴露
     intl = theIntl;
+    // 容错处理
+    const _formatMessage = intl.formatMessage;
+    intl.formatMessage = function() {
+        try{
+            _formatMessage.call(intl,...arguments)
+        }catch (e) {
+            console.error(e);
+            return e.message;
+        }
+    }
 }
 
 function formatMessage() {
@@ -32,4 +44,4 @@ function formatMessage() {
 
 export * from 'react-intl';
 
-export {formatMessage, setLocale, getLocale, _setIntlObject};
+export { formatMessage, setLocale, getLocale, _setIntlObject };
