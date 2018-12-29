@@ -66,6 +66,7 @@ export default function (api, options = {}) {
         const defaultLocale = options.default || 'zh-CN';
         const wrapperContent = Mustache.render(wrapperTpl, {
             async:options.async,
+            ignoreError:JSON.stringify(options.ignoreError),
             localeList: localeFileList,
             antd: options.antd === undefined ? true : options.antd,
             baseNavigator:

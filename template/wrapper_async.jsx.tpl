@@ -4,7 +4,7 @@ import { addLocaleData, IntlProvider, injectIntl } from 'react-intl';
 import { _setIntlObject } from 'umi/locale';
 
 const InjectedWrapper = injectIntl(function(props) {
-  _setIntlObject(props.intl);
+  _setIntlObject(props.intl,{{{ignoreError}}});
   return props.children;
 })
 {{/localeList.length}}

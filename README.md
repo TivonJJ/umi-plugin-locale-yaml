@@ -16,9 +16,16 @@ export default {
       'umi-plugin-locale-yaml',
       {
         locale: {
+          enable: true, // 是否启用 默认false
           default: 'zh-CN', //默认语言 zh-CN
           baseNavigator: true, // 为true时，用navigator.language的值作为默认语言
-          antd: true // 是否启用antd的<LocaleProvider />
+          antd: true, // 是否启用antd的<LocaleProvider />
+          async:{ // 是否单独异步加载国际化配置，会被单独打包成一个文件，大型项目推荐使用，可选设置loadingComponent,如果不需要直接设置成true
+              loadingComponent: './components/PageLoading/index', // 国际化文件加载时渲染
+          },
+          ignoreError:{ // 是否忽略错误，在传入id错误时候会报错，造成程序无法继续往下走，忽略后只会报错单不会终止执行 无option可设置为true
+              message: '-' // 错误后默认显示的文字，不设置默认会显示错误的message
+          }
         }
       }
     ]
